@@ -21,8 +21,7 @@ log = Logger(__name__)
 
 ONE_MEGABYTE = 1024 * 1024
 QUANDL_DATA_URL = (
-    'https://www.quandl.com/api/v3/datatables/WIKI/PRICES.csv?'
-#     'https://www.quandl.com/api/v3/databases/SF0/data.csv?'
+    'https://www.quandl.com/api/v3/datatables/SHARADAR/SF0.csv?'
 )
 
 
@@ -30,7 +29,7 @@ def format_metadata_url(api_key):
     """ Build the query URL for Quandl WIKI Prices metadata.
     """
     query_params = [('api_key', api_key), ('qopts.export', 'true')]
-    print(QUANDL_DATA_URL + urlencode(query_params))
+
     return (
         QUANDL_DATA_URL + urlencode(query_params)
     )
@@ -180,7 +179,7 @@ def parse_pricing_and_vol(data,
         yield asset_id, asset_data
 
 
-@bundles.register('quandl')
+@bundles.register('quandl1')
 def quandl_bundle(environ,
                   asset_db_writer,
                   minute_bar_writer,
